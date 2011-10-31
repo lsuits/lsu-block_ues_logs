@@ -6,6 +6,8 @@ require_once 'classes/lib.php';
 require_login();
 
 $courseid = required_param('id', PARAM_INT);
+$sectionid = optional_param('sectionid', null, PARAM_INT);
+
 $course_params = array('id' => $courseid);
 
 $course = $DB->get_record('course', $course_params);
@@ -27,13 +29,25 @@ $PAGE->set_course($course);
 $PAGE->set_heading($blockname);
 $PAGE->set_title($blockname);
 $PAGE->navbar->add($blockname);
+$PAGE->set_pagetype('block_cps_tracking');
 
 echo $OUTPUT->header();
 echo $OUTPUT->heading($blockname);
 
 $sections = cps_section::from_course($course);
 
-$to_tables = function ($in, $section) use ($_s, $OUTPUT) {
+$course_label = function ($course, $section) {
+    return "$course->department $course->cou_number $section->sec_number";
+};
+
+$to_option = function ($section) use ($course_label) {
+    $course = $section->course();
+    return $course_label($course, $section);
+};
+
+$section_selector = array_map($course_label, $sections);
+
+$to_tables = function ($in, $section) use ($_s, $course_label, $OUTPUT) {
     $by_params = array('l.sectionid' => $section->id);
 
     $action_filter = optional_param('action', null, PARAM_TEXT);
@@ -78,12 +92,7 @@ $to_tables = function ($in, $section) use ($_s, $OUTPUT) {
         $table->data[] = new html_table_row($line);
     }
 
-    $cps_cou = $section->course();
-
-    $section_header = $cps_cou->department . ' ' . $cps_cou->cou_number . ' ' .
-        $section->sec_number;
-
-    echo $OUTPUT->heading($section_header);
+    echo $OUTPUT->heading($course_label($section->course(), $section));
 
     echo '<div class = "tracking_table">' .
             html_writer::table($table) .
@@ -91,6 +100,10 @@ $to_tables = function ($in, $section) use ($_s, $OUTPUT) {
 
     return $in or !empty($count);
 };
+
+if ($sectionid) {
+    $sections = cps_section::get_all(array('id' => $sectionid));
+}
 
 $success = array_reduce($sections, $to_tables, false);
 
