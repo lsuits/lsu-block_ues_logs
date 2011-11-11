@@ -45,7 +45,8 @@ $to_option = function ($section) use ($course_label) {
     return $course_label($course, $section);
 };
 
-$section_selector = array_map($course_label, $sections);
+//TODO: print out section drop down; filter by capability
+$section_selector = array_map($to_option, $sections);
 
 $to_tables = function ($in, $section) use ($_s, $course_label, $OUTPUT) {
     $by_params = array('l.sectionid' => $section->id);
