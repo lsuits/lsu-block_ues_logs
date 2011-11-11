@@ -26,4 +26,8 @@ abstract class cps_tracking_event_handler {
             return false;
         }
     }
+
+    public static function cps_section_drop($cps_section) {
+        return cps_log::delete_all(array('sectionid' => $cps_section->id));
+    }
 }

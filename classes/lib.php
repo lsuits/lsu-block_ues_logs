@@ -9,6 +9,10 @@ interface cps_log_types {
 }
 
 class cps_log extends cps_external implements cps_log_types {
+    var $userid;
+    var $sectionid;
+    var $action;
+    var $timestamp;
 
     public static function add($cps_user) {
         return self::make(self::ADD, $cps_user);

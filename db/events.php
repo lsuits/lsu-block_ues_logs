@@ -1,6 +1,10 @@
 <?php
 
-$events = array('cps_student_release', 'cps_student_process');
+$events = array(
+    'cps_student_release',
+    'cps_student_process',
+    'cps_section_drop'
+);
 
 $to_handler = function ($event) {
     return array(
