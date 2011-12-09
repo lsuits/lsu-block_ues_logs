@@ -6,4 +6,4 @@ Without actually modifiying the enrollment process, the block builds records
 based on the enrollment diff during cron. The block provides a simple read only
 access to the logs to all relevent users (Teachers, Admins, etc).
 
-[CPS]: https://github.com/lsuits/ues
+[UES]: https://github.com/lsuits/ues
