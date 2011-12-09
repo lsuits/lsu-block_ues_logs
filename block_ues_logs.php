@@ -1,8 +1,8 @@
 <?php
 
-class block_cps_tracking extends block_list {
+class block_ues_logs extends block_list {
     function init() {
-        $this->title = get_string('pluginname', 'block_cps_tracking');
+        $this->title = get_string('pluginname', 'block_ues_logs');
     }
 
     function applicable_formats() {
@@ -21,21 +21,21 @@ class block_cps_tracking extends block_list {
             return $this->content;
         }
 
-        require_once $CFG->dirroot . '/blocks/cps_tracking/classes/lib.php';
+        require_once $CFG->dirroot . '/blocks/ues_logs/classes/lib.php';
 
-        $sections = cps_section::from_course($COURSE);
+        $sections = ues_section::from_course($COURSE);
 
         $by_params = function ($sections) {
             return array('sectionid' => current($sections)->id);
         };
 
         // No sections or ones with enrollment info
-        if (empty($sections) or !cps_log::count($by_params($sections))) {
+        if (empty($sections) or !ues_log::count($by_params($sections))) {
             return $this->content;
         }
 
         $course_params = array('id' => $COURSE->id);
-        $url = new moodle_url('/blocks/cps_tracking/view.php', $course_params);
+        $url = new moodle_url('/blocks/ues_logs/view.php', $course_params);
         $link = html_writer::link($url, $this->title);
 
         $content = new stdClass;

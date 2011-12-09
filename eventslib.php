@@ -1,11 +1,11 @@
 <?php
 
-require_once $CFG->dirroot . '/blocks/cps_tracking/classes/lib.php';
+require_once $CFG->dirroot . '/blocks/ues_logs/classes/lib.php';
 
-abstract class cps_tracking_event_handler {
-    public static function cps_student_process($cps_student) {
+abstract class ues_logs_event_handler {
+    public static function ues_student_process($ues_student) {
         try {
-            $log = cps_log::add($cps_student);
+            $log = ues_log::add($ues_student);
 
             $log->save();
 
@@ -15,9 +15,9 @@ abstract class cps_tracking_event_handler {
         }
     }
 
-    public static function cps_student_release($cps_student) {
+    public static function ues_student_release($ues_student) {
         try {
-            $log = cps_log::drop($cps_student);
+            $log = ues_log::drop($ues_student);
 
             $log->save();
 
@@ -27,7 +27,7 @@ abstract class cps_tracking_event_handler {
         }
     }
 
-    public static function cps_section_drop($cps_section) {
-        return cps_log::delete_all(array('sectionid' => $cps_section->id));
+    public static function ues_section_drop($ues_section) {
+        return ues_log::delete_all(array('sectionid' => $ues_section->id));
     }
 }

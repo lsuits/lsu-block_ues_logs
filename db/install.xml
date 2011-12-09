@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="blocks/cps_tracking/db" VERSION="20111026" COMMENT="XMLDB file for the CPS tracking block."
+<XMLDB PATH="blocks/ues_logs/db" VERSION="20111026" COMMENT="XMLDB file for the UES loggin block."
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
   <TABLES>
-    <TABLE NAME="enrol_cps_logs" COMMENT="Table storing Add / Drop Tracking.">
+    <TABLE NAME="enrol_ues_logs" COMMENT="Table storing Add / Drop Tracking.">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="userid"/>
         <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="sectionid"/>
@@ -15,7 +15,7 @@
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="useridtouser"/>
         <KEY NAME="useridtouser" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id" PREVIOUS="primary" NEXT="sectionidtosection"/>
-        <KEY NAME="sectionidtosection" TYPE="foreign" FIELDS="sectionid" REFTABLE="enrol_cps_sections" REFFIELDS="id" PREVIOUS="useridtouser"/>
+        <KEY NAME="sectionidtosection" TYPE="foreign" FIELDS="sectionid" REFTABLE="enrol_ues_sections" REFFIELDS="id" PREVIOUS="useridtouser"/>
       </KEYS>
       <INDEXES>
         <INDEX NAME="usesec" UNIQUE="false" FIELDS="userid, sectionid" NEXT="usesecact"/>

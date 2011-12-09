@@ -1,15 +1,15 @@
 <?php
 
 $events = array(
-    'cps_student_release',
-    'cps_student_process',
-    'cps_section_drop'
+    'ues_student_release',
+    'ues_student_process',
+    'ues_section_drop'
 );
 
 $to_handler = function ($event) {
     return array(
-        'handlerfile' => '/blocks/cps_tracking/eventslib.php',
-        'handlerfunction' => array('cps_tracking_event_handler', $event),
+        'handlerfile' => '/blocks/ues_logs/eventslib.php',
+        'handlerfunction' => array('ues_logs_event_handler', $event),
         'schedule' => 'instant'
     );
 };

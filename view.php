@@ -12,29 +12,29 @@ $course_params = array('id' => $courseid);
 
 $course = $DB->get_record('course', $course_params);
 if (empty($course)) {
-    print_error('no_course', 'block_cps_tracking');
+    print_error('no_course', 'block_ues_logs');
 }
 
 $context = get_context_instance(CONTEXT_COURSE, $course->id);
 if (!has_capability('moodle/grade:edit', $context)) {
-    print_error('no_permission', 'block_cps_tracking');
+    print_error('no_permission', 'block_ues_logs');
 }
 
-$_s = cps::gen_str('block_cps_tracking');
+$_s = ues::gen_str('block_ues_logs');
 
 $blockname = $_s('pluginname');
-$PAGE->set_url('/blocks/cps_tracking/view.php', $course_params);
+$PAGE->set_url('/blocks/ues_logs/view.php', $course_params);
 $PAGE->set_context($context);
 $PAGE->set_course($course);
 $PAGE->set_heading($blockname);
 $PAGE->set_title($blockname);
 $PAGE->navbar->add($blockname);
-$PAGE->set_pagetype('block_cps_tracking');
+$PAGE->set_pagetype('block_ues_logs');
 
 echo $OUTPUT->header();
 echo $OUTPUT->heading($blockname);
 
-$sections = cps_section::from_course($course);
+$sections = ues_section::from_course($course);
 
 $course_label = function ($course, $section) {
     return "$course->department $course->cou_number $section->sec_number";
@@ -74,7 +74,7 @@ $to_tables = function ($in, $section) use ($_s, $course_label, $OUTPUT) {
         $order_by = 'timestamp DESC';
     }
 
-    $logs = cps_log::get_by_special($by_params, $order_by);
+    $logs = ues_log::get_by_special($by_params, $order_by);
     $count = count($logs);
 
     $n_head = get_string('firstname') . ' / '. get_string('lastname');
@@ -103,7 +103,7 @@ $to_tables = function ($in, $section) use ($_s, $course_label, $OUTPUT) {
 };
 
 if ($sectionid) {
-    $sections = cps_section::get_all(array('id' => $sectionid));
+    $sections = ues_section::get_all(array('id' => $sectionid));
 }
 
 $success = array_reduce($sections, $to_tables, false);
