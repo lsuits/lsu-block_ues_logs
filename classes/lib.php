@@ -41,7 +41,7 @@ class ues_log extends ues_external implements ues_log_types {
 
         $where = (!empty($f) ? ' AND ' : '') . implode(' AND ', $f);
 
-        $sql = "SELECT l.userid, u.firstname, u.lastname, l.action, l.timestamp
+        $sql = "SELECT l.id, l.userid, u.firstname, u.lastname, l.action, l.timestamp
             FROM {enrol_ues_logs} l,
                  {user} u
                  WHERE u.id = l.userid $where ORDER BY $order";
