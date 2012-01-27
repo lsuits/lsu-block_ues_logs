@@ -54,7 +54,7 @@ $to_option = function ($section) use ($course_label) {
     return $course_label($course, $section);
 };
 
-$section_selector = array_map($to_option, $sections);
+$section_selector = array(0 => $_s('allsections')) + array_map($to_option, $sections);
 
 $baseurl = new moodle_url('view.php', array(
     'id' => $courseid,
@@ -70,7 +70,8 @@ $nothing = array('' => $_s('section'));
 echo $OUTPUT->single_select($baseurl, 'sectionid', $section_selector, $sectionid, $nothing);
 
 $nothing = array('' => $_s('action'));
-$actions = array(ues_log::ADD => $_s('add'), ues_log::DROP => $_s('drop'));
+$defaults = array(0 => $_s('both'));
+$actions = $defaults + array(ues_log::ADD => $_s('add'), ues_log::DROP => $_s('drop'));
 
 echo $OUTPUT->single_select($baseurl, 'action', $actions, $action, $nothing);
 
