@@ -115,11 +115,12 @@ $to_tables = function ($in, $section) use ($_s, $course_label, $OUTPUT, $baseurl
 
     foreach ($logs as $log) {
         $name = fullname($log);
+        $email_link = html_writer::link('mailto:' . $log->email, $name);
 
         $class = $log->action == 'AD' ? 'add' : 'drop';
         $action = '<span class = "table_'.$class.'">' . $log->action . '</span>';
 
-        $line = array($name, $action, date('Y-m-d', $log->timestamp));
+        $line = array($email_link, $action, date('Y-m-d', $log->timestamp));
         $table->data[] = new html_table_row($line);
     }
 
