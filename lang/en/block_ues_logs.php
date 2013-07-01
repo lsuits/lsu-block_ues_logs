@@ -14,3 +14,5 @@ $string['action'] = 'Choose Action...';
 
 $string['add'] = 'Add';
 $string['drop'] = 'Drop';
+
+$string['ues_logs:addinstance'] = 'Add block for Add / Drop tracking';
