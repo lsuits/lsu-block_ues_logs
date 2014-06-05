@@ -1,3 +1,8 @@
+# v0.0.4
+
+- update deprecated functions
+- Moodle 2.7 compatibility
+
 # v0.0.3 (Snapshot)
 
 - Added _All Sections_ and _Either Action_ to filters [09c3e85](https://github.com/lsuits/ues_logs/commit/09c3e854a6f8b8921bb17cb2498305c8b2f5be24)
