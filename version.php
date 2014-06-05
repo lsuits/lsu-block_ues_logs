@@ -26,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version = 2014060500;
 $plugin->requires = 2013051400;
-$plugin->component = 'block_ues_Logs';
+$plugin->component = 'block_ues_logs';
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'v0.0.4';
