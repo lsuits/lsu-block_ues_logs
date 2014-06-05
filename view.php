@@ -24,7 +24,7 @@ if (empty($course)) {
     print_error('no_course', 'block_ues_logs');
 }
 
-$context = get_context_instance(CONTEXT_COURSE, $course->id);
+$context = context_course::instance($course->id);
 if (!has_capability('moodle/grade:edit', $context)) {
     print_error('no_permission', 'block_ues_logs');
 }
@@ -121,7 +121,7 @@ $to_tables = function ($in, $section) use ($_s, $course_label, $OUTPUT, $baseurl
         $class = $log->action == 'AD' ? 'add' : 'drop';
         $action = '<span class = "table_'.$class.'">' . $log->action . '</span>';
 
-        $line = array($email_link, $action, date('Y-m-d', $log->timestamp));
+        $line = array($email_link, $action, strftime('%F %T', $log->timestamp));
         $table->data[] = new html_table_row($line);
     }
 

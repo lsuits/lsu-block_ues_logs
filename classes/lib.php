@@ -40,12 +40,11 @@ class ues_log extends ues_external implements ues_log_types {
         $f = array_map($to_flatten, array_keys($params), array_values($params));
 
         $where = (!empty($f) ? ' AND ' : '') . implode(' AND ', $f);
-
-        $sql = "SELECT l.id, l.userid, u.firstname, u.lastname, u.email, l.action, l.timestamp
+        $altnamefields = user_picture::fields('u', array(), "'ignore'");
+        $sql = "SELECT l.id, l.userid, {$altnamefields}, u.email, l.action, l.timestamp
             FROM {enrol_ues_logs} l,
                  {user} u
                  WHERE u.id = l.userid $where ORDER BY $order";
-
         $upgraded = function($log) { return ues_log::upgrade($log); };
 
         return array_map($upgraded, $DB->get_records_sql($sql));

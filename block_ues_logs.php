@@ -16,7 +16,7 @@ class block_ues_logs extends block_list {
 
         global $CFG, $COURSE, $OUTPUT;
 
-        $context = get_context_instance(CONTEXT_COURSE, $COURSE->id);
+        $context = context_course::instance($COURSE->id);
         if (!has_capability('moodle/grade:edit', $context)) {
             return $this->content;
         }
