@@ -22,7 +22,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 require_once $CFG->dirroot . '/enrol/ues/publiclib.php';
-ues::require_daos();
+ues::requireDaoLibs();
 
 interface ues_log_types {
     const ADD = 'AD';
