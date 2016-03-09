@@ -1,3 +1,8 @@
+# v3.0.0
+
+- Upgrade event handling to Moodle's Events 2.0 API
+- removed `eventslib.php`
+
 # v0.0.4
 
 - update deprecated functions
