@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -20,7 +18,7 @@
 /**
  * @package   block_ues_logs
  * @copyright 2016 Louisiana State University
- * @copyright 2016 Robert Russo, Philip Cali, Adam Zapletal, Jason Peak, Dave Elliott, Chad Mazilly
+ * @copyright 2016 Robert Russo, Philip Cali, Adam Zapletal, Jason Peak, Chad Mazilly
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
