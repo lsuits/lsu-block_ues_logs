@@ -8,8 +8,8 @@ $observers = array(
     ),
 
     array(
-        'eventname'   => '\enrol_ues\event\ues_student_accepted',
-        'callback'    => 'block_ues_logs_observer::ues_student_accepted',
+        'eventname'   => '\enrol_ues\event\ues_student_processed',
+        'callback'    => 'block_ues_logs_observer::ues_student_processed',
     ),
 
     array(

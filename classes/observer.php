@@ -31,10 +31,10 @@ class block_ues_logs_observer {
     /**
      * UES event: Log this UES student's addition to this course.
      *
-     * @param  \enrol_ues\event\ues_student_accepted  $event
+     * @param  \enrol_ues\event\ues_student_processed  $event
      * @param  int  other['ues_user_id']
      */
-    public static function ues_student_accepted(\enrol_ues\event\ues_student_accepted $event) {
+    public static function ues_student_processed(\enrol_ues\event\ues_student_processed $event) {
 
         try {
             $ues_student = ues_student::by_id($event->other['ues_user_id']);
