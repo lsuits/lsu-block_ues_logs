@@ -42,9 +42,9 @@ abstract class ues_logs_event_handler {
 
             $log->save();
 
-            return true;
+            return $ues_student;
         } catch (Exception $e) {
-            return false;
+            return $ues_student;
         }
     }
 
