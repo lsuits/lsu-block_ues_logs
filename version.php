@@ -28,8 +28,7 @@ $plugin->version = 2014060500;
 $plugin->requires = 2013051400;
 $plugin->component = 'block_ues_logs';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v0.0.4';
 
 $plugin->dependencies = array(
-    'enrol_ues' => 2013081007,
+    'enrol_ues' => 2016083000,
 );
